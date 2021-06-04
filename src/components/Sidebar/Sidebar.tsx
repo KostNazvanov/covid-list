@@ -14,7 +14,7 @@ const Sidebar = (props: ISidebarProps) => {
   return (
     <>
       <Nav
-        className="col-md-12 d-none d-md-block bg-light sidebar"
+        className="sidebar"
         activeKey="/home"
       >
         <div className="sidebar-sticky"/>

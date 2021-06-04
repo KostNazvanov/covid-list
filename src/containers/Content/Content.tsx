@@ -5,6 +5,7 @@ import { Table } from 'react-bootstrap';
 
 import { ICase, ICases, IState } from '../../reducers/interfaces';
 import actions from '../../reducers/actions';
+import './Content.css';
 
 interface IContentProps extends RouterProps {
   cases: ICases;

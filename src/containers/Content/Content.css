@@ -1,0 +1,6 @@
+.table {
+    max-height: 100vh;
+    display: block;
+    overflow: auto;
+    width: 100%;
+}
