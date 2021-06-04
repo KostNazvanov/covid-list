@@ -13,3 +13,7 @@
     line-height: 64px;
     font-size: 24px;
 }
+
+.header__logo {
+    padding: 0 4px;
+}
