@@ -3,7 +3,12 @@
     border: 1px solid grey;
     border-radius: 8px;
     display: flex;
+    flex-direction: column;
     height: 99vh;
     width: 99vw;
     overflow: hidden;
+}
+
+.app__content {
+    display: flex;
 }

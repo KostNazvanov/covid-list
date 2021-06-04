@@ -1,0 +1,15 @@
+.header {
+    width: 100%;
+    min-height: 64px;
+    border-bottom: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__logo,.header__user-menu {
+    height: 64px;
+    width: 300px;
+    text-align: center;
+    line-height: 64px;
+    font-size: 24px;
+}

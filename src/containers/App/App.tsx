@@ -5,6 +5,7 @@ import Sidebar from '../../components/Sidebar';
 import Content from '../Content';
 import actions from '../../reducers/actions';
 import './App.css';
+import Header from '../Header';
 
 const App = () => {
   useEffect(() => {
@@ -13,12 +14,15 @@ const App = () => {
 
   return (
     <div className="app">
-      <Router>
-        <Sidebar/>
-        <Route path="*">
-          <Content/>
-        </Route>
-      </Router>
+      <Header/>
+      <div className="app__content">
+        <Router>
+          <Sidebar/>
+          <Route path="*">
+            <Content/>
+          </Route>
+        </Router>
+      </div>
     </div>
   );
 }
