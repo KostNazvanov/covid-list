@@ -37,6 +37,7 @@ th {
 
 th > div {
     padding: 4px 8px;
+    /* TODO Make dynamic width. 9vw is too performance expensive */
     width: 136px;
 }
 
