@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Nav } from 'react-bootstrap';
 import { withRouter } from 'react-router';
+import actions from '../../reducers/actions';
 
 import './Sidebar.css';
+import { connect } from 'react-redux';
+import { ICountries, IState } from '../../reducers/interfaces';
 
-const Side = () => {
+interface ISidebarProps {
+  countries: ICountries;
+}
+
+const Sidebar = (props: ISidebarProps) => {
+  useEffect(() => {
+    actions.getCountries({});
+  }, []);
+
   return (
     <>
       <Nav
@@ -13,23 +24,16 @@ const Side = () => {
         onSelect={selectedKey => alert(`selected ${selectedKey}`)}
       >
         <div className="sidebar-sticky"/>
-        <Nav.Item>
-          <Nav.Link href="/home">Active</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-1">Link</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-2">Link</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
-            Disabled
-          </Nav.Link>
-        </Nav.Item>
+        {props.countries.map(({ Country, Slug, ISO2 }) => (
+          <Nav.Item key={ISO2}>
+            <Nav.Link href={`/${Slug}`}>{Country}</Nav.Link>
+          </Nav.Item>
+        ))}
       </Nav>
     </>
   );
 };
 
-export default withRouter(Side);
+const mapStateToProps = (state: IState) => ({ countries: state.countries });
+
+export default withRouter(connect(mapStateToProps)(Sidebar));

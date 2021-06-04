@@ -12,9 +12,6 @@ function App() {
           <Col xs={2} id="sidebar-wrapper">
             <Sidebar/>
           </Col>
-          <Col xs={10} id="page-content-wrapper">
-            this is a test
-          </Col>
         </Row>
       </Container>
     </Router>
