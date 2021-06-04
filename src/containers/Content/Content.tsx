@@ -3,13 +3,14 @@ import { RouterProps, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
 
-import { ICase, ICases, IState } from '../../reducers/interfaces';
+import { ICase, ICases, ICountry, IState } from '../../reducers/interfaces';
 import actions from '../../reducers/actions';
 import './Content.css';
 import { getDate } from '../../helpers/utils';
 
 interface IContentProps extends RouterProps {
   cases: ICases;
+  country: ICountry | undefined;
 }
 
 const columns: {
@@ -60,8 +61,12 @@ const Content = (props: IContentProps) => {
   }, [props.history.location.pathname]);
 
   return (
-    <Table>
-      <thead>
+    <div className="content">
+      <div>
+        <div className="content__country">{props.country?.Country}</div>
+      </div>
+      <Table>
+        <thead>
         <tr>
           {columns.map(({ label, key }, index) => (
             <th key={key + label + index}>
@@ -69,28 +74,32 @@ const Content = (props: IContentProps) => {
             </th>
           ))}
         </tr>
-      </thead>
-      {props.cases.map((item, index) => (
-        <tr key={item.ID}>
-          {columns.map(({ label, key, content }) => (
-            <th key={key + label + index}>
-              {content
-                ? content(item, index, props.cases)
-                : item[key]
-              }
-            </th>
-          ))}
-        </tr>
-      ))}
-    </Table>
+        </thead>
+
+        {props.cases.map((item, index) => (
+          <tr key={item.ID}>
+            {columns.map(({ label, key, content }) => (
+              <th key={key + label + index}>
+                {content
+                  ? content(item, index, props.cases)
+                  : item[key]
+                }
+              </th>
+            ))}
+          </tr>
+        ))}
+      </Table>
+    </div>
   )
 }
 
 const mapStateToProps = (state: IState, props: RouterProps) => {
   const country = props.history.location.pathname.substr(1);
-  const ISO2 = state.countries.find(({ Slug }) => country === Slug)?.ISO2;
+  const currentCountry = state.countries.find(({ Slug }) => country === Slug);
+  const ISO2 = currentCountry?.ISO2;
 
   return {
+    country: currentCountry,
     cases: state.cases
       .filter(({ CountryCode }) => CountryCode === ISO2)
       .sort((case1, case2) => case2.Date > case1.Date ? 1 : -1)
