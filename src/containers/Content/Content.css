@@ -4,6 +4,13 @@
     overflow: auto;
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
+}
+
+thead {
+    display: block;
+    position: sticky;
+    top: 0;
 }
 
 thead th {
@@ -13,16 +20,24 @@ thead th {
     border-bottom: 2px solid grey;
 }
 
+thead tr {
+    display: flex;
+    background: white;
+}
+
 tr {
     border-bottom: 1px solid grey;
-    padding: 4px 8px;
     margin: 0 auto;
 }
 
 th {
     border-right: 1px solid grey;
-    padding: 4px 8px;
     color: #3b3a3a;
+}
+
+th > div {
+    padding: 4px 8px;
+    min-width: 164px;
 }
 
 tr:hover {

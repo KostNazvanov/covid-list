@@ -69,24 +69,28 @@ const Content = (props: IContentProps) => {
       {/* TODO Make 'loading' placeholder, while cases are loading */}
       <Table>
         <thead>
-          {/* TODO Table doesn't fit vertically perfectly. Is it bad? */}
-          <tr>
-            {columns.map(({ label, key }, index) => (
-              <th key={key + label + index}>
+        {/* TODO Table doesn't fit vertically perfectly. Is it bad? */}
+        <tr>
+          {columns.map(({ label, key }, index) => (
+            <th key={key + label + index}>
+              <div>
                 {label}
-              </th>
-            ))}
-          </tr>
+              </div>
+            </th>
+          ))}
+        </tr>
         </thead>
 
         {props.cases.map((item, index) => (
           <tr key={item.ID}>
             {columns.map(({ label, key, content }) => (
               <th key={key + label + index}>
-                {content
-                  ? content(item, index, props.cases)
-                  : item[key]
-                }
+                <div>
+                  {content
+                    ? content(item, index, props.cases)
+                    : item[key]
+                  }
+                </div>
               </th>
             ))}
           </tr>
