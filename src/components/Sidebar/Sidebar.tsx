@@ -1,12 +1,12 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter, Link, RouterProps } from 'react-router-dom';
 
 import './Sidebar.css';
 import { connect } from 'react-redux';
 import { ICountries, IState } from '../../reducers/interfaces';
 
-interface ISidebarProps {
+interface ISidebarProps extends RouterProps {
   countries: ICountries;
 }
 
@@ -20,7 +20,7 @@ const Sidebar = (props: ISidebarProps) => {
         <div className="sidebar-sticky"/>
         {props.countries.map(({ Country, Slug, ISO2 }) => (
           <Link key={ISO2} to={`/${Slug}`}>
-            <Nav.Item >
+            <Nav.Item className={('/' + Slug) === props.history.location.pathname ? 'nav-item--selected' : ''}>
               {Country}
             </Nav.Item>
           </Link>

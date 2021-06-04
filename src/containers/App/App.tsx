@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
 import Content from '../Content';
 import actions from '../../reducers/actions';
+import './App.css';
 
 const App = () => {
   useEffect(() => {
@@ -11,12 +12,14 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
-      <Sidebar/>
-      <Route path="*">
-        <Content/>
-      </Route>
-    </Router>
+    <div className="app">
+      <Router>
+        <Sidebar/>
+        <Route path="*">
+          <Content/>
+        </Route>
+      </Router>
+    </div>
   );
 }
 
