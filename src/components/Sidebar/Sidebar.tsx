@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent, ChangeEventHandler, useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { withRouter, Link, RouterProps } from 'react-router-dom';
 
@@ -11,22 +11,38 @@ interface ISidebarProps extends RouterProps {
 }
 
 const Sidebar = (props: ISidebarProps) => {
+  const [filter, setFilter] = useState<string>('');
+
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setFilter(event.target.value.toLowerCase());
+  }
+
   return (
-    <>
-      <Nav
-        className="sidebar"
-        activeKey="/home"
-      >
-        <div className="sidebar-sticky"/>
-        {props.countries.map(({ Country, Slug, ISO2 }) => (
-          <Link key={ISO2} to={`/${Slug}`}>
-            <Nav.Item className={('/' + Slug) === props.history.location.pathname ? 'nav-item--selected' : ''}>
-              {Country}
-            </Nav.Item>
-          </Link>
-        ))}
-      </Nav>
-    </>
+    <Nav
+      className="sidebar"
+      activeKey="/home"
+    >
+      <div className="sidebar__filter">
+        <input
+          className="sidebar__filter-input"
+          onChange={onChange}
+          value={filter}
+        />
+        <button
+          className="sidebar__filter-button"
+          onClick={() => setFilter('')}
+        >
+          X
+        </button>
+      </div>
+      {props.countries.map(({ Country, Slug, ISO2 }) => Country.toLowerCase().includes(filter) && (
+        <Link key={ISO2} to={`/${Slug}`}>
+          <Nav.Item className={('/' + Slug) === props.history.location.pathname ? 'nav-item--selected' : ''}>
+            {Country}
+          </Nav.Item>
+        </Link>
+      ))}
+    </Nav>
   );
 };
 
