@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Nav } from 'react-bootstrap';
-import { withRouter } from 'react-router';
-import actions from '../../reducers/actions';
+import { withRouter, Link } from 'react-router-dom';
 
 import './Sidebar.css';
 import { connect } from 'react-redux';
@@ -12,21 +11,18 @@ interface ISidebarProps {
 }
 
 const Sidebar = (props: ISidebarProps) => {
-  useEffect(() => {
-    actions.getCountries({});
-  }, []);
-
   return (
     <>
       <Nav
         className="col-md-12 d-none d-md-block bg-light sidebar"
         activeKey="/home"
-        onSelect={selectedKey => alert(`selected ${selectedKey}`)}
       >
         <div className="sidebar-sticky"/>
         {props.countries.map(({ Country, Slug, ISO2 }) => (
           <Nav.Item key={ISO2}>
-            <Nav.Link href={`/${Slug}`}>{Country}</Nav.Link>
+            <Link to={`/${Slug}`}>
+              {Country}
+            </Link>
           </Nav.Item>
         ))}
       </Nav>

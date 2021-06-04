@@ -28,6 +28,7 @@ const createAsyncAction = (type: string) => {
 
 const actions: IActions = {
   ...createAsyncAction('GET_COUNTRIES'),
+  ...createAsyncAction('GET_CASES_BY_COUNTRY'),
 };
 
 export default actions;

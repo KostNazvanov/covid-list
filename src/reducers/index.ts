@@ -15,6 +15,11 @@ const reducer = (state = initialState, action: IAction) => {
         ...state,
         countries: action.countries,
       }
+    case 'GET_CASES_BY_COUNTRY_SUCCESS':
+      return {
+        ...state,
+        cases: action.cases,
+      }
     default:
       return state;
   }
