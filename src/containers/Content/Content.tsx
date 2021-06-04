@@ -64,16 +64,19 @@ const Content = (props: IContentProps) => {
     <div className="content">
       <div>
         <div className="content__country">{props.country?.Country}</div>
+        {/*  TODO Here should be switch for toggling table/plot view. Not enough time */}
       </div>
+      {/* TODO Make 'loading' placeholder, while cases are loading */}
       <Table>
         <thead>
-        <tr>
-          {columns.map(({ label, key }, index) => (
-            <th key={key + label + index}>
-              {label}
-            </th>
-          ))}
-        </tr>
+          {/* TODO Table doesn't fit vertically perfectly. Is it bad? */}
+          <tr>
+            {columns.map(({ label, key }, index) => (
+              <th key={key + label + index}>
+                {label}
+              </th>
+            ))}
+          </tr>
         </thead>
 
         {props.cases.map((item, index) => (

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ChangeEventHandler, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { withRouter, Link, RouterProps } from 'react-router-dom';
 
@@ -35,6 +35,7 @@ const Sidebar = (props: ISidebarProps) => {
           X
         </button>
       </div>
+      {/* TODO Make 'loading' placeholder, while countries are loading */}
       {props.countries.map(({ Country, Slug, ISO2 }) => Country.toLowerCase().includes(filter) && (
         <Link key={ISO2} to={`/${Slug}`}>
           <Nav.Item className={('/' + Slug) === props.history.location.pathname ? 'nav-item--selected' : ''}>
