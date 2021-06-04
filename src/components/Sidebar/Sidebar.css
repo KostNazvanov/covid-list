@@ -32,6 +32,6 @@
 
 .sidebar .nav-item:hover {
     background: #bcbcbc;
-    border-left-color: #bcbcbc !important;
-    color: darkblue;
+    border-left-color: #bcbcbc;
+    color: #31726f;
 }
