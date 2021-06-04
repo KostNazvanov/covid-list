@@ -1,5 +1,5 @@
 import {
-  IAction,
+  IAction, ICountries,
   IState,
 } from './interfaces';
 
@@ -13,7 +13,7 @@ const reducer = (state = initialState, action: IAction) => {
     case 'GET_COUNTRIES_SUCCESS':
       return {
         ...state,
-        countries: action.countries,
+        countries: (action.countries as ICountries).sort((countryA, countryB) => countryA.Country > countryB.Country ? 1 : -1),
       }
     case 'GET_CASES_BY_COUNTRY_SUCCESS':
       return {
