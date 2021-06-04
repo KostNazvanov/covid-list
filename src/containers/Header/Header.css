@@ -17,3 +17,30 @@
 .header__logo {
     padding: 0 4px;
 }
+
+.header__user-menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 32px;
+    align-items: center;
+}
+
+.header__user-menu__avatar {
+    border-radius: 50%;
+    background: red;
+    color: white;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.header__user-menu__avatar:hover {
+    background: #b30000;
+}
+
+.header__user-menu__username {
+    margin-right: 12px;
+}
