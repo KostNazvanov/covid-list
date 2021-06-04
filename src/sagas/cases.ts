@@ -5,7 +5,7 @@ import { ICases } from '../reducers/interfaces';
 import { readStream } from '../helpers/utils';
 
 function getCasesByCountry(payload: IPayload) {
-  fetch(`https://api.covid19api.com/country/${payload.country}/status/confirmed`)
+  fetch(`https://api.covid19api.com/live/country/${payload.country}/status/confirmed`)
     .then(response => response.body)
     .then(body => {
       if (!body) {

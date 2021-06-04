@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { withRouter, Link } from 'react-router-dom';
 
@@ -19,11 +19,11 @@ const Sidebar = (props: ISidebarProps) => {
       >
         <div className="sidebar-sticky"/>
         {props.countries.map(({ Country, Slug, ISO2 }) => (
-          <Nav.Item key={ISO2}>
-            <Link to={`/${Slug}`}>
+          <Link key={ISO2} to={`/${Slug}`}>
+            <Nav.Item >
               {Country}
-            </Link>
-          </Nav.Item>
+            </Nav.Item>
+          </Link>
         ))}
       </Nav>
     </>

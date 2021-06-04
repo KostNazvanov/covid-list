@@ -13,13 +13,19 @@ export interface ICountry {
 export type ICountries = ICountry[];
 
 export interface ICase {
+  Active: number;
+  City: string;
+  CityCode: string;
+  Confirmed: number;
   Country: string;
   CountryCode: string;
+  Deaths: number;
+  ID: string;
   Lat: string;
   Lon: string;
-  Cases: number;
-  Status: string;
   Date: string;
+  Province: string;
+  Recovered: number;
 }
 
 export type ICases = ICase[];

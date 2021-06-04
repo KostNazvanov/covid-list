@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Sidebar from '../../components/Sidebar';
@@ -13,18 +12,10 @@ const App = () => {
 
   return (
     <Router>
-      <Container fluid>
-        <Row>
-          <Col xs={2} id="sidebar-wrapper">
-            <Sidebar/>
-          </Col>
-          <Col xs={10}>
-            <Route path="*">
-              <Content/>
-            </Route>
-          </Col>
-        </Row>
-      </Container>
+      <Sidebar/>
+      <Route path="*">
+        <Content/>
+      </Route>
     </Router>
   );
 }
