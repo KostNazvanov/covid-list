@@ -37,7 +37,7 @@ th {
 
 th > div {
     padding: 4px 8px;
-    min-width: 164px;
+    width: 136px;
 }
 
 tr:hover {

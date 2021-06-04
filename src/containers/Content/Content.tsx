@@ -27,7 +27,7 @@ const columns: {
     label: 'Confirmed Cases',
     key: 'Confirmed',
     content: (item, index, allCases) => [...allCases]
-      .splice(0, index + 1)
+      .splice(index + 1)
       .reduce((prevVal, { Confirmed, Recovered }) => prevVal + Confirmed - Recovered, 0)
   },
   {
@@ -38,7 +38,7 @@ const columns: {
     label: 'Deaths',
     key: 'Deaths',
     content: (item, index, allCases) => [...allCases]
-      .splice(0, index + 1)
+      .splice(index + 1)
       .reduce((prevVal, { Deaths }) => prevVal + Deaths, 0)
   },
   {
@@ -109,8 +109,8 @@ const mapStateToProps = (state: IState, props: RouterProps) => {
     country: currentCountry,
     cases: state.cases
       .filter(({ CountryCode }) => CountryCode === ISO2)
-      .sort((case1, case2) => case2.Date > case1.Date ? 1 : -1)
-      .reverse(),
+      .sort((case1, case2) => case2.Date < case1.Date ? 1 : -1)
+      .reverse()
   };
 }
 
