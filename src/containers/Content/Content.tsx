@@ -55,8 +55,6 @@ const columns: {
 ]
 
 const Content = (props: IContentProps) => {
-  console.log(props.cases);
-
   useEffect(() => {
     actions.getCasesByCountry({ country: props.history.location.pathname.substr(1) });
   }, [props.history.location.pathname]);
@@ -64,13 +62,14 @@ const Content = (props: IContentProps) => {
   return (
     <Table>
       <thead>
-      <tr>
-        {columns.map(({ label, key }, index) => (
-          <th key={key + label + index}>
-            {label}
-          </th>
-        ))}
-      </tr>
+        <tr>
+          {columns.map(({ label, key }, index) => (
+            <th key={key + label + index}>
+              {label}
+            </th>
+          ))}
+        </tr>
+      </thead>
       {props.cases.map((item, index) => (
         <tr key={item.ID}>
           {columns.map(({ label, key, content }) => (
@@ -83,7 +82,6 @@ const Content = (props: IContentProps) => {
           ))}
         </tr>
       ))}
-      </thead>
     </Table>
   )
 }

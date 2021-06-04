@@ -3,4 +3,31 @@
     display: block;
     overflow: auto;
     width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    font-size: 20px;
+    color: black;
+    border-bottom: 2px solid grey;
+}
+
+tr {
+    border-bottom: 1px solid grey;
+    padding: 4px 8px;
+    margin: 0 auto;
+}
+
+th {
+    border-right: 1px solid grey;
+    padding: 4px 8px;
+    color: #3b3a3a;
+}
+
+tr:hover {
+    background: #eeeeee;
+}
+th:hover {
+    background: #d2d2d2;
+    color: black;
 }
